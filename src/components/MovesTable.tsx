@@ -6,21 +6,20 @@ import {
 import { Move } from 'chess.js';
 import { useEffect, useRef } from 'react';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import {
-    HandshakeIcon,
-    FlagIcon,
-    ChevronFirst,
-    ChevronLast,
-    ChevronLeft,
-    ChevronRight,
-    RefreshCw,
-} from 'lucide-react';
+// import {
+//     HandshakeIcon,
+//     FlagIcon,
+//     ChevronFirst,
+//     ChevronLast,
+//     ChevronLeft,
+//     ChevronRight,
+//     RefreshCw,
+// } from 'lucide-react';
 
 const MovesTable = () => {
     const [userSelectedMoveIndex, setUserSelectedMoveIndex] = useRecoilState(
         userSelectedMoveIndexAtom,
     );
-    const setIsFlipped = useSetRecoilState(isBoardFlippedAtom);
     const moves = useRecoilValue(movesAtom);
     const movesTableRef = useRef<HTMLInputElement>(null);
     const movesArray = moves.reduce((result, _, index: number, array: Move[]) => {
@@ -80,7 +79,7 @@ const MovesTable = () => {
                     );
                 })}
             </div>
-            {moves.length ? (
+            {/* {moves.length ? (
                 <div className="w-full p-2 bg-[#20211D] flex items-center justify-between">
                     <div className="flex gap-4">
                         <button className="flex items-center gap-2 hover:bg-[#32302E] rounded px-2.5 py-1">
@@ -150,7 +149,7 @@ const MovesTable = () => {
                         </button>
                     </div>
                 </div>
-            ) : null}
+            ) : null} */}
         </div>
     );
 };

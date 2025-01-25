@@ -47,6 +47,7 @@ export interface Metadata {
 export const Game = () => {
     const socket = useSocket();
     const { gameId } = useParams();
+    const moves = useRecoilValue(movesAtom);
     const user = useUser();
     const navigate = useNavigate();
     const [gameID, setGameID] = useState("");
@@ -109,7 +110,7 @@ export const Game = () => {
                             chess.move({ from: move.from, to: move.to });
                         }
                         setMoves((moves) => [...moves, move]);
-                        // moveAudio.play();
+
                     } catch (error) {
                         console.log('Error', error);
                     }
@@ -225,12 +226,6 @@ export const Game = () => {
         navigate('/');
     };
     if (!socket) return <div>Connecting...</div>
-
-    const getPlayerName = (player: { id: string; name: string } | undefined) => {
-        console.log(player);
-        return player ? player.name : 'Unknown';
-    };
-
     return (<div className="">
         {result && (
             <GameEndModal
@@ -249,7 +244,7 @@ export const Game = () => {
         )}
         <div className="justify-center flex">
             <div className="pt-2 w-full">
-                <div className="flex gap-8 w-full">
+                <div className="flex flex-col lg:flex-row p-4 gap-4">
                     <div className="text-white">
                         <div className="flex justify-center">
                             <div>
@@ -266,7 +261,7 @@ export const Game = () => {
                                     </div>
                                 )}
                                 <div>
-                                    <div className={`w-full flex justify-center text-white`}>
+                                    <div className={`lg:w-auto flex justify-center text-white`}>
                                         <ChessBoard
                                             started={started}
                                             gameId={gameId ?? ''}
@@ -293,7 +288,7 @@ export const Game = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="rounded-md pt-2 bg-bgAuxiliary3 flex-1 overflow-auto h-[95vh] overflow-y-scroll no-scrollbar">
+                    <div className="w-full lg:w-96 flex flex-col gap-4 ml-6">
                         {!started ? (
                             <div className="pt-8 flex justify-center w-full">
                                 {added ? (
@@ -322,9 +317,12 @@ export const Game = () => {
                                 <ExitGameModel onClick={() => handleExit()} />
                             </div>
                         )}
-                        <div>
-                            <MovesTable />
-                        </div>
+                        {moves.length > 0 &&
+                            <div>
+
+                                <MovesTable />
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-// import WhiteKing from '../../public/wk.png';
-// import BlackKing from '../../public/bk.png';
 import { GameResult, Result } from '../screens/Game';
+import { useNavigate } from 'react-router-dom';
 
 interface ModalProps {
     blackPlayer?: { id: string; name: string };
@@ -15,25 +14,20 @@ const GameEndModal: React.FC<ModalProps> = ({
     gameResult,
 }) => {
     const [isOpen, setIsOpen] = useState(true);
-
+    const navigate = useNavigate();
     const closeModal = () => {
+        navigate("/");
         setIsOpen(false);
     };
 
     const PlayerDisplay = ({
         player,
-        gameResult,
-        isWhite,
     }: {
         player?: { id: string; name: string };
         gameResult: Result;
         isWhite: boolean;
     }) => {
-        // const imageSrc = isWhite ? WhiteKing : BlackKing;
-        const borderColor =
-            gameResult === (isWhite ? Result.WHITE_WINS : Result.BLACK_WINS)
-                ? 'border-green-400'
-                : 'border-red-400';
+        
 
         return (
             <div className="flex flex-col items-center">

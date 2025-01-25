@@ -7,8 +7,8 @@ import ChessSquare from './chess-board/ChessSquare';
 import NumberNotation from './chess-board/NumberNotation';
 import { drawArrow } from '../utils/canvas';
 import Confetti from 'react-confetti';
-// import MoveSound from '/move.wav';
-// import CaptureSound from '/capture.wav';
+import MoveSound from '/move.wav';
+import CaptureSound from '/capture.wav';
 
 import { useRecoilState } from 'recoil';
 
@@ -84,10 +84,10 @@ export const ChessBoard = memo(
 
         const labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
         const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
-        const boxSize = 80;
+        const boxSize = useResponsiveBoxSize(); 
         const [gameOver, setGameOver] = useState(false);
-        // const moveAudio = new Audio(MoveSound);
-        // const captureAudio = new Audio(CaptureSound);
+        const moveAudio = new Audio(MoveSound);
+        const captureAudio = new Audio(CaptureSound);
 
         const handleMouseDown = (e: MouseEvent<HTMLDivElement>, squareRep: string) => {
             e.preventDefault();
@@ -279,11 +279,11 @@ export const ChessBoard = memo(
                                                                 });
                                                             }
                                                             if (moveResult) {
-                                                                // moveAudio.play();
+                                                                moveAudio.play();
 
-                                                                // if (moveResult?.captured) {
-                                                                //     captureAudio.play();
-                                                                // }
+                                                                if (moveResult?.captured) {
+                                                                    captureAudio.play();
+                                                                }
                                                                 setMoves((prev) => [...prev, moveResult]);
                                                                 setFrom(null);
                                                                 setLegalMoves([]);
@@ -320,6 +320,7 @@ export const ChessBoard = memo(
                                                 onMouseUp={(e) => {
                                                     handleMouseUp(e, squareRepresentation);
                                                 }}
+                                                
                                             >
                                                 <div className="w-full justify-center flex h-full relative">
                                                     {square && <ChessSquare square={square} />}
@@ -359,3 +360,26 @@ export const ChessBoard = memo(
         );
     }
 );
+
+const useResponsiveBoxSize = () => {
+    const [boxSize, setBoxSize] = useState(80); // Default size
+
+    useEffect(() => {
+        const updateBoxSize = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth < 640) { // Mobile
+                setBoxSize(45);
+            } else if (screenWidth < 1024) { // Tablet
+                setBoxSize(60);
+            } else { // Laptop/Desktop
+                setBoxSize(80);
+            }
+        };
+
+        updateBoxSize();
+        window.addEventListener('resize', updateBoxSize);
+        return () => window.removeEventListener('resize', updateBoxSize);
+    }, []);
+
+    return boxSize;
+};

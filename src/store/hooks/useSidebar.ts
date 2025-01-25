@@ -1,11 +1,17 @@
-import { create } from "zustand";
+import { atom, useRecoilState } from "recoil";
 
-interface SidebarStore {
-    isOpen: boolean;
-    toggle: () => void;
-}
+const sidebarState = atom({
+    key: "sidebarState",
+    default: { isOpen: false },
+});
 
-export const useSidebar = create<SidebarStore>((set: any) => ({
-    isOpen: true,
-    toggle: () => set((state: any) => ({ isOpen: !state.isOpen })),
-}));
+export const useSidebar = () => {
+    const [state, setState] = useRecoilState(sidebarState);
+
+    const toggle = () => setState((prev) => ({ isOpen: !prev.isOpen }));
+
+    return {
+        isOpen: state.isOpen,
+        toggle,
+    };
+};

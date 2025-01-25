@@ -5,7 +5,7 @@
   --bg-color-auxiliary-2: rgba(0, 0, 0, 0.6);
   --bg-color-auxiliary-3: rgba(0, 0, 0, 0.1);
   --board-light: #EBECD0;
-  --board-dark: #739552;
+  --board-dark: black;
 }
 
 [data-theme="bubblegum"]:root {
@@ -16,4 +16,11 @@
   --bg-color-auxiliary-3: rgba(0, 0, 0, 0.1);
   --board-light:#FEFFFE;
   --board-dark: #FBD9E1;
+}
+nav {
+  z-index: 40; /* Ensures it appears above content */
+}
+
+button {
+  z-index: 50; /* For the toggle button */
 }

@@ -15,7 +15,6 @@ function App() {
     <>
       <div className='h-auto bg-slate-900'>
         <BrowserRouter>
-
           <RecoilRoot>
             <Suspense fallback={<Loader />}>
               <Routes>
@@ -24,12 +23,10 @@ function App() {
                   path="/login"
                   element={<Login />}
                 />
-
                 <Route
                   path="/game/:gameId"
                   element={<Layout><Game/></Layout>}
                 />
-
               </Routes>
             </Suspense>
           </RecoilRoot>

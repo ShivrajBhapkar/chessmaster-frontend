@@ -1,6 +1,5 @@
 import { cn } from "../lib/utils";
 import { useSidebar } from "../store/hooks/useSidebar";
-import { Button } from "./ui/button";
 import { useLocation } from "react-router-dom";
 import {
     Accordion,

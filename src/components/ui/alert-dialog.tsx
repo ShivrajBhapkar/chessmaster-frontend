@@ -102,9 +102,16 @@ const AlertDialogAction = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <AlertDialogPrimitive.Action
         ref={ref}
-        className={cn(Button, className)}
-        {...props}
-    />
+        asChild // Use asChild here to let Radix UI handle the rendering
+    >
+        <Button
+            variant="default" // Use the variant you want
+            className={cn(className)}
+            {...props}
+        >
+            {props.children}
+        </Button>
+    </AlertDialogPrimitive.Action>
 ));
 AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName;
 
@@ -114,13 +121,16 @@ const AlertDialogCancel = React.forwardRef<
 >(({ className, ...props }, ref) => (
     <AlertDialogPrimitive.Cancel
         ref={ref}
-        className={cn(
-            Button({ variant: 'outline' }),
-            'mt-2 sm:mt-0',
-            className,
-        )}
-        {...props}
-    />
+        asChild // Use asChild here to let Radix UI handle the rendering
+    >
+        <Button
+            variant="outline" // Use the variant you want
+            className={cn('mt-2 sm:mt-0', className)}
+            {...props}
+        >
+            Cancel
+        </Button>
+    </AlertDialogPrimitive.Cancel>
 ));
 AlertDialogCancel.displayName = AlertDialogPrimitive.Cancel.displayName;
 
