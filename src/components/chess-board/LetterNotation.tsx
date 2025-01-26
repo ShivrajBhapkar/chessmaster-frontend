@@ -7,7 +7,7 @@ const LetterNotation = ({
 }) => {
     return (
         <div
-            className={`font-bold absolute ${isMainBoxColor ? 'text-[#739552]' : 'text-[#EBEDD0]'} right-0.5 bottom-0`}
+            className={`font-bold absolute ${isMainBoxColor ? 'text-[#364d1f]' : 'text-[#565a1f]'} right-0.5 bottom-0`}
         >
             {label}
         </div>

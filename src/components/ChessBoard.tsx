@@ -310,7 +310,7 @@ export const ChessBoard = memo(
                                                     height: boxSize,
                                                 }}
                                                 key={j}
-                                                className={`${isRightClickedSquare ? (isMainBoxColor ? 'bg-[#CF664E]' : 'bg-[#E87764]') : isKingInCheckSquare ? 'bg-[#FF6347]' : isHighlightedSquare ? `${isMainBoxColor ? 'bg-[#BBCB45]' : 'bg-[#F4F687]'}` : isMainBoxColor ? 'bg-boardDark' : 'bg-boardLight'} ${''}`}
+                                                className={`${isRightClickedSquare ? (isMainBoxColor ? 'bg-black' : 'bg-[#171717]') : isKingInCheckSquare ? 'bg-[#171717]' : isHighlightedSquare ? `${isMainBoxColor ? 'bg-[#BBCB45]' : 'bg-[#F4F687]'}` : isMainBoxColor ? 'bg-boardDark' : 'bg-boardLight'} ${''}`}
                                                 onContextMenu={(e) => {
                                                     e.preventDefault();
                                                 }}

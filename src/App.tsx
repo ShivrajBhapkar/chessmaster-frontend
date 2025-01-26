@@ -9,14 +9,18 @@ import { RecoilRoot } from 'recoil'
 import { Layout } from "./layout";
 import { Suspense } from "react";
 import { Loader } from "lucide-react";
+import { ThemesProvider } from "./context/themeContext";
+import { Settings } from "./screens/Settings";
+import { Themes } from "./components/themes";
 function App() {
 
   return (
     <>
-      <div className='h-auto bg-slate-900'>
+      <div className="min-h-screen bg-bgMain text-textMain">
         <BrowserRouter>
           <RecoilRoot>
             <Suspense fallback={<Loader />}>
+              <ThemesProvider>
               <Routes>
                 <Route path="/" element={<Layout><Landing /></Layout>} />
                 <Route
@@ -26,8 +30,15 @@ function App() {
                 <Route
                   path="/game/:gameId"
                   element={<Layout><Game/></Layout>}
-                />
-              </Routes>
+                  />
+                  <Route
+                    path='/settings'
+                    element={<Layout><Settings /></Layout>}
+                  >
+                    <Route path="themes" element={<Themes />} />
+                    </Route>
+                </Routes>
+              </ThemesProvider>
             </Suspense>
           </RecoilRoot>
 

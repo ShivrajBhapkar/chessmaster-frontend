@@ -7,7 +7,7 @@ const NumberNotation = ({
 }) => {
     return (
         <div
-            className={`font-bold absolute ${isMainBoxColor ? 'text-[#739552]' : 'text-[#EBEDD0]'} left-0.5`}
+            className={`font-bold absolute ${isMainBoxColor ? 'text-[#547732]' : 'text-[#a1a755]'} left-0.5`}
         >
             {label}
         </div>

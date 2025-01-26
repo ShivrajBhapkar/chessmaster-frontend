@@ -5,12 +5,14 @@ import { UpperNavItems, LowerNavItems } from '../components/constants/side-nav';
 import { cn } from '../lib/utils';
 import { useSidebar } from '../store/hooks/useSidebar';
 import { SideNav } from './side-nav';
+import { useThemeContext } from '../store/hooks/useThemes';
 
 interface SidebarProps {
     className?: string;
 }
 
 export default function Sidebar({ className }: SidebarProps) {
+    const { theme } = useThemeContext();
     const { isOpen, toggle } = useSidebar();
     useEffect(() => {
         const handleResize = () => {
@@ -38,8 +40,8 @@ export default function Sidebar({ className }: SidebarProps) {
     return (
         <nav
             className={cn(
-                ` hidden h-screen pt-4 sm:block md:block bg-bgAuxiliary1 text-white w-24 lg:w-36 top-0  sticky`,
-                className
+                ` hidden h-screen pt-4 sm:block md:block  text-white w-24 lg:w-36 top-0  sticky`,
+                className, `${theme == "shadow" ? "bg-black" :"bg-bgAuxiliary1"}`
             )}
         >
             <div className="flex flex-col h-full justify-between">
