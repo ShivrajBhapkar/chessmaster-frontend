@@ -98,7 +98,8 @@ export function SideNav({ items, setOpen, className }: SideNavProps) {
                     >
                         <a
                             href={item.href}
-                            onClick={() => {
+                                onClick={() => {
+                                
                                 if (setOpen) setOpen(false);
                             }}
                             className={cn(

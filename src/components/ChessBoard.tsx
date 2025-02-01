@@ -84,7 +84,7 @@ export const ChessBoard = memo(
 
         const labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
         const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null);
-        const boxSize = useResponsiveBoxSize(); 
+        const boxSize = useResponsiveBoxSize();
         const [gameOver, setGameOver] = useState(false);
         const moveAudio = new Audio(MoveSound);
         const captureAudio = new Audio(CaptureSound);
@@ -310,7 +310,7 @@ export const ChessBoard = memo(
                                                     height: boxSize,
                                                 }}
                                                 key={j}
-                                                className={`${isRightClickedSquare ? (isMainBoxColor ? 'bg-black' : 'bg-[#171717]') : isKingInCheckSquare ? 'bg-[#171717]' : isHighlightedSquare ? `${isMainBoxColor ? 'bg-[#BBCB45]' : 'bg-[#F4F687]'}` : isMainBoxColor ? 'bg-boardDark' : 'bg-boardLight'} ${''}`}
+                                                className={`${isRightClickedSquare ? (isMainBoxColor ? 'bg-black' : 'bg-[#171717]') : isKingInCheckSquare ? 'bg-red-600' : isHighlightedSquare ? `${isMainBoxColor ? 'bg-[#BBCB45]' : 'bg-[#F4F687]'}` : isMainBoxColor ? 'bg-boardDark' : 'bg-boardLight'} ${''}`}
                                                 onContextMenu={(e) => {
                                                     e.preventDefault();
                                                 }}
@@ -320,7 +320,7 @@ export const ChessBoard = memo(
                                                 onMouseUp={(e) => {
                                                     handleMouseUp(e, squareRepresentation);
                                                 }}
-                                                
+
                                             >
                                                 <div className="w-full justify-center flex h-full relative">
                                                     {square && <ChessSquare square={square} />}
