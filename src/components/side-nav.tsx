@@ -30,7 +30,7 @@ export function SideNav({ items, setOpen, className }: SideNavProps) {
     const user = useUser();
     const location = useLocation();
     const { isOpen } = useSidebar();
-    const [openItem, setOpenItem] = useState<string>("");
+    const [,setOpenItem] = useState<string>("");
 
     useEffect(() => {
         if (!isOpen) {

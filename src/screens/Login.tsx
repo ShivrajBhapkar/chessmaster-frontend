@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
-import { useRecoilState } from 'recoil';
-import { userAtom } from '../store/atoms/user';
+import { useEffect } from 'react';
 import { useUser } from '../store/hooks/useUser';
 
 const BACKEND_URL =
@@ -9,8 +7,6 @@ const BACKEND_URL =
 
 const Login = () => {
     const navigate = useNavigate();
-    const guestName = useRef<HTMLInputElement>(null);
-    const [_, setUser] = useRecoilState(userAtom);
     const user = useUser();
     const google = () => {
         window.open(`${BACKEND_URL}/auth/google`, '_self');

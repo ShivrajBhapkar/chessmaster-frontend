@@ -52,7 +52,7 @@ export const Game = () => {
     const navigate = useNavigate();
     const [gameID, setGameID] = useState("");
     const [gameMetadata, setGameMetadata] = useState<Metadata | null>(null);
-    const [chess, setChess] = useState(new Chess());
+    const [chess,] = useState(new Chess());
     const [board, setBoard] = useState(chess.board());
     const [added, setAdded] = useState(false);
     const [result, setResult] = useState<GameResult | null>(null);
@@ -79,7 +79,7 @@ export const Game = () => {
             switch (message.type) {
                 case GAME_ADDED:
                     setAdded(true);
-                    setGameID((p) => message.gameId);
+                    setGameID((_p) => message.gameId);
                     break;
                 case INIT_GAME:
                     setBoard(chess.board());

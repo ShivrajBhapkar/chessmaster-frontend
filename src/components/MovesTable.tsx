@@ -1,11 +1,10 @@
 import {
-    isBoardFlippedAtom,
     movesAtom,
     userSelectedMoveIndexAtom,
 } from '../store/atoms/chessBoard';
 import { Move } from 'chess.js';
 import { useEffect, useRef } from 'react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 // import {
 //     HandshakeIcon,
 //     FlagIcon,

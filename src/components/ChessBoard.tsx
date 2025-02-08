@@ -11,8 +11,8 @@ import MoveSound from '/move.wav';
 import CaptureSound from '/capture.wav';
 
 import { useRecoilState } from 'recoil';
-
 import { isBoardFlippedAtom, movesAtom, userSelectedMoveIndexAtom } from '../store/atoms/chessBoard';
+import { useResponsiveBoxSize } from '../store/hooks/useResponsiveBoxSize';
 
 export function isPromoting(chess: Chess, from: Square, to: Square) {
     if (!from) {
@@ -69,8 +69,6 @@ export const ChessBoard = memo(
         } | null)[][];
         socket: WebSocket;
     }) => {
-        console.log('chessboard reloaded');
-
         const [isFlipped, setIsFlipped] = useRecoilState(isBoardFlippedAtom);
         const [userSelectedMoveIndex, setUserSelectedMoveIndex] = useRecoilState(userSelectedMoveIndexAtom);
         const [moves, setMoves] = useRecoilState(movesAtom);
@@ -155,7 +153,7 @@ export const ChessBoard = memo(
 
         useEffect(() => {
             clearCanvas();
-            const lMove = moves.at(-1);
+            const lMove = moves.slice(-1)[0];
             if (lMove) {
                 setLastMove({
                     from: lMove.from,
@@ -361,25 +359,25 @@ export const ChessBoard = memo(
     }
 );
 
-const useResponsiveBoxSize = () => {
-    const [boxSize, setBoxSize] = useState(80); // Default size
+// const useResponsiveBoxSize = () => {
+//     const [boxSize, setBoxSize] = useState(80); // Default size
 
-    useEffect(() => {
-        const updateBoxSize = () => {
-            const screenWidth = window.innerWidth;
-            if (screenWidth < 640) { // Mobile
-                setBoxSize(45);
-            } else if (screenWidth < 1024) { // Tablet
-                setBoxSize(60);
-            } else { // Laptop/Desktop
-                setBoxSize(80);
-            }
-        };
+//     useEffect(() => {
+//         const updateBoxSize = () => {
+//             const screenWidth = window.innerWidth;
+//             if (screenWidth < 640) { // Mobile
+//                 setBoxSize(45);
+//             } else if (screenWidth < 1024) { // Tablet
+//                 setBoxSize(60);
+//             } else { // Laptop/Desktop
+//                 setBoxSize(80);
+//             }
+//         };
 
-        updateBoxSize();
-        window.addEventListener('resize', updateBoxSize);
-        return () => window.removeEventListener('resize', updateBoxSize);
-    }, []);
+//         updateBoxSize();
+//         window.addEventListener('resize', updateBoxSize);
+//         return () => window.removeEventListener('resize', updateBoxSize);
+//     }, []);
 
-    return boxSize;
-};
+//     return boxSize;
+// };

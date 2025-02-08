@@ -14,17 +14,17 @@ const Accordion: React.FC<{ children: React.ReactNode; defaultOpen?: string }> =
     );
 };
 
-const AccordionItem: React.FC<{ id: string; children: React.ReactNode; className?: string }> = ({ id, children, className }) => {
+const AccordionItem: React.FC<{ id: string; children: React.ReactNode; className?: string }> = ({  children, className }) => {
     const context = useContext(AccordionContext);
     if (!context) throw new Error("AccordionItem must be used within an Accordion");
 
-    const isOpen = context.openItem === id;
+    
 
     return (
         <div className={cn("border-b", className)}>
             {React.Children.map(children, (child) =>
                 React.isValidElement(child)
-                    ? React.cloneElement(child, { isOpen, id })
+                    ? React.cloneElement(child)
                     : child
             )}
         </div>
