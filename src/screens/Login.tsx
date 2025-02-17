@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useUser } from '../store/hooks/useUser';
 
 
-const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL ?? 'http://chesspro.xyz:3000';
+const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL ?? 'https://chesspro.xyz:3000';
 
 const Login = () => {
     const navigate = useNavigate();
