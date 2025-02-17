@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
 
 // How do you put this in .env? @hkirat
-export const BACKEND_URL = 'http://localhost:3000';
+export const BACKEND_URL = "http://chesspro.xyz:3000";
 export interface User {
   token: string;
   id: string;
@@ -15,11 +15,12 @@ export const userAtom = atom<User>({
     get: async () => {
       try {
         const response = await fetch(`${BACKEND_URL}/auth/refresh`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: "include",
+            
         });
         if (response.ok) {
           const data = await response.json();

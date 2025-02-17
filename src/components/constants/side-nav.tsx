@@ -1,6 +1,6 @@
 import { PuzzleIcon, LogInIcon, LogOutIcon, SettingsIcon} from 'lucide-react';
 const BACKEND_URL =
-  import.meta.env.VITE_APP_BACKEND_URL ?? 'http://localhost:3000';
+  import.meta.env.VITE_APP_BACKEND_URL ?? 'http://chesspro.xyz:3000';
 export const UpperNavItems = [
   {
     title: 'Play',

@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useUser } from '../store/hooks/useUser';
+import { useRecoilState } from 'recoil';
+import { userAtom } from '../store/atoms/user';
 
-const BACKEND_URL =
-    import.meta.env.VITE_APP_BACKEND_URL ?? 'http://localhost:3000';
+const BACKEND_URL = import.meta.env.VITE_APP_BACKEND_URL ?? 'http://chesspro.xyz:3000';
 
 const Login = () => {
     const navigate = useNavigate();
     const user = useUser();
+    const [_, setUser] = useRecoilState(userAtom);
     const google = () => {
         window.open(`${BACKEND_URL}/auth/google`, '_self');
     };
