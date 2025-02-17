@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
 
 // How do you put this in .env? @hkirat
-export const BACKEND_URL = "https://chesspro.xyz:3000";
+export const BACKEND_URL = "http://chesspro.xyz:3000";
 export interface User {
   token: string;
   id: string;
