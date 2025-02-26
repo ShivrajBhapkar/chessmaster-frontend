@@ -12,9 +12,9 @@ const Login = () => {
         window.open(`${BACKEND_URL}/auth/google`, '_self');
     };
 
-    const github = () => {
-        window.open(`${BACKEND_URL}/auth/github`, '_self');
-    };
+    // const github = () => {
+    //     window.open(`${BACKEND_URL}/auth/github`, '_self');
+    // };
     useEffect(() => {
         if (user) {
             navigate("/game/random");
@@ -36,13 +36,13 @@ const Login = () => {
                         <img src="google.svg" alt="" className="w-6 h-6 mr-2" />
                         Sign in with Google
                     </div>
-                    <div
+                    {/* <div
                         className="flex items-center justify-center px-4 py-2 rounded-md cursor-pointer hover:bg-gray-600 transition-colors duration-300"
                         onClick={github}
                     >
                         <img src="github.svg" alt="" className="w-6 h-6 mr-2" />
                         Sign in with Github
-                    </div>
+                    </div> */}
                 </div>
                 {/* <div className="flex flex-col items-center md:ml-8">
                     <div className="flex items-center mb-4">

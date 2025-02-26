@@ -8,7 +8,7 @@ import {
 } from '../components/ui/card';
 import chessIcon from '../../public/chess.png';
 import lightningIcon from '../../public/lightning-bolt.png';
-import friendIcon from '../../public/friendship.png';
+// import friendIcon from '../../public/friendship.png';
 import GameModeComponent from './GameModeComponent';
 
 export function PlayCard() {
@@ -28,18 +28,18 @@ export function PlayCard() {
             },
             disabled: false,
         },
-        {
-            icon: (
-                <img
-                    src={friendIcon}
-                    className="inline-block mt-1 h-7 w-7"
-                    alt="friend"
-                />
-            ),
-            title: 'Play a Friend',
-            description: 'Invite a Friend to a game of Chess',
-            disabled: true,
-        }
+        // {
+        //     icon: (
+        //         <img
+        //             src={friendIcon}
+        //             className="inline-block mt-1 h-7 w-7"
+        //             alt="friend"
+        //         />
+        //     ),
+        //     title: 'Play a Friend',
+        //     description: 'Invite a Friend to a game of Chess',
+        //     disabled: true,
+        // }
     ];
 
     const navigate = useNavigate();

@@ -5,7 +5,7 @@ export const Settings = () => {
         <div className="max-w-full mt-0">
             <h2 className="font-bold text-2xl p-2">Settings</h2>
             <div className="flex mt-3 gap-12">
-                <div className="">
+                <div className="ml-8">
                     <Link to="themes">
                         <img src="/theme.svg" alt="icon" />
                         <span>Themes</span>

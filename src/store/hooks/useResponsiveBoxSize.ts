@@ -7,7 +7,7 @@ export const useResponsiveBoxSize = () => {
         const updateBoxSize = () => {
             const screenWidth = window.innerWidth;
             if (screenWidth < 640) { // Mobile
-                setBoxSize(45);
+                setBoxSize(40);
             } else if (screenWidth < 1024) { // Tablet
                 setBoxSize(60);
             } else { // Laptop/Desktop
